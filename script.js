@@ -22,7 +22,9 @@ function createGrid(size) {
         div.classList.add('grid-item');
         div.style.width = `${itemWidth}px`
         div.style.height = `${itemHeight}px`
-        div.addEventListener('mouseover', changeColor);
+        div.addEventListener('mouseover', previewColor);
+        div.addEventListener('mouseout', resetColor);
+        div.addEventListener('click', lockColor); 
         container.appendChild(div);
     }
 
@@ -38,20 +40,33 @@ function getRandomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-function changeColor(event) {
-   const element = event.target;
+function previewColor(event) {
+    const element = event.target;
 
-   // get current opacity, default 1 if not set
-   let opacity = parseFloat(window.getComputedStyle(element).opacity) || 1;
+    //check if element is not locked
+    if(!element.classList.contains('locked')) {
+        // get random color for when you hover over specific grid-item
+        const previewColor = getRandomColor();
+        element.style.backgroundColor = previewColor;
+    }
+}
 
-    // check if opacity is already 1 , if yes, reset to full color and randomize
-   if(opacity === 1){
-    element.style.backgroundColor = getRandomColor();
-   }
+function resetColor(event){
+    const element = event.target;
 
-   // reduce opacity by 10% each time
-   opacity = Math.max(opacity - 0.1, 0);
-   element.style.opacity = opacity;
+    //check if element is not locked
+    if(!element.classList.contains('locked')) {
+        // reset to default color
+        element.style.backgroundColor = '#fff';
+    }
+}
+function lockColor(event) {
+    const element = event.target;
+
+    if(!element.classList.contains('locked')) {
+    element.classList.add('locked');
+    element.style.opacity = 1;
+    }
 }
 
 function resizeGrid(){
