@@ -10,8 +10,8 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
-    width: 960px;
-    height: 960px;
+    width: 800px;
+    height: 600px;
 }
 
 #resize-button {
@@ -25,7 +25,7 @@ body {
     box-sizing: border-box;
     border: 1px solid #ddd;
     background-color: #fff;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, opacity 0.3s;
 }
 
 .grid-item:hover {
