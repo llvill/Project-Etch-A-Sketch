@@ -1,6 +1,6 @@
 # Project-Etch-A-Sketch
 
-**Etch-A-Sketch** is an interactive drawing app created within the Odin Project curriculum. This project displays JavScript and DOM manipulation skills.
+**Etch-A-Sketch** is an interactive drawing app created within the Odin Project curriculum. This project displays JavaScript and DOM manipulation skills.
 
 ## Description
 
